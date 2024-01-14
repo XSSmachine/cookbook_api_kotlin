@@ -4,10 +4,14 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.codingwithme.recipeapp.entities.converter.CategoryListConverter
 import org.unizd.rma.kovacevic.dao.RecipeDao
-import org.unizd.rma.kovacevic.entitiy.Recipes
+import org.unizd.rma.kovacevic.entitiy.*
+import org.unizd.rma.kovacevic.entitiy.converter.MealListConverter
 
-@Database(entities = [Recipes::class],version = 1,exportSchema = false)
+@Database(entities = [Recipes::class, CategoryItems::class, Category::class, Meal::class, MealsItems::class],version = 1,exportSchema = false)
+@TypeConverters(CategoryListConverter::class, MealListConverter::class)
 abstract class RecipeDatabase: RoomDatabase() {
 
     companion object{
@@ -27,5 +31,5 @@ abstract class RecipeDatabase: RoomDatabase() {
         }
     }
 
-    abstract fun recipeDao(): RecipeDao
+    abstract fun recipeDao():RecipeDao
 }

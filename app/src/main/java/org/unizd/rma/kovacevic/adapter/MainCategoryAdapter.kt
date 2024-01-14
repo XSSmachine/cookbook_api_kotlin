@@ -19,8 +19,10 @@ class MainCategoryAdapter: RecyclerView.Adapter<MainCategoryAdapter.RecipeViewHo
 
     }
 
-    fun setData(arrData : List<CategoryItems>){
-        arrMainCategory = arrData as ArrayList<CategoryItems>
+    fun setData(arrData: List<CategoryItems>) {
+        arrMainCategory.clear()
+        arrMainCategory.addAll(arrData)
+        notifyDataSetChanged()
     }
 
     fun setClickListener(listener1: OnItemClickListener){
